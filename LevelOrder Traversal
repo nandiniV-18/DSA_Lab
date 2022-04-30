@@ -1,0 +1,38 @@
+import java.util.*;
+ class Node{
+        int data;
+        Node left;Node right;
+        Node(int key){
+            data=key;
+            left=right=null;
+        }
+    }
+public class Main
+{
+   
+    public static void printLevelOrder(Node root){
+            Queue<Node>q=new LinkedList<>();
+            q.add(root);
+            while(!q.isEmpty()){
+                Node cur=q.poll();
+                System.out.println(cur.data);
+                if(cur.left!=null){
+                    q.add(cur.left);
+                }
+                if(cur.right!=null){
+                    q.add(cur.right);
+                }
+            }
+    }
+    public static void main(String[] args)
+    {
+        Node root= new Node(1);
+        root.left= new Node(2);
+        root.right= new Node(3);
+        root.right.left=new Node(5);
+        root.right.left.right=new Node(6);
+        root.right.left.left=new Node(9);
+        printLevelOrder(root);
+    }
+}
+
