@@ -1,0 +1,44 @@
+//Height of tree
+import java.util.*;
+ 
+public class Main
+{
+    static Scanner sc = new Scanner(System.in);
+   class Node{
+        int data;
+        Node left;Node right;
+        Node(int key){
+            data=key;
+            left=right=null;
+        }
+    }
+    Node root;
+    public void insert(int val){
+        root=insertrec(root,val);
+    }
+    public Node insertrec(Node root,int val){
+         if(val == -1)
+        {
+            return root;
+        }
+        root = new Node(val);
+        System.out.print("Enter value for Left of " + root.data + " : ");
+        root.left = insertrec(root.left,sc.nextInt());
+        System.out.print("Enter value for Right of " + root.data + " : ");
+        root.right = insertrec(root.right,sc.nextInt());
+        return root;
+    }
+    public int height(Node root){
+        if(root==null)
+        return 0;
+        return Math.max(height(root.left),height(root.right))+1;
+    }
+    public static void main(String[] args)
+    {
+        Main obj = new Main();
+        System.out.print("Enter Root : ");
+        obj.insert(sc.nextInt());
+        System.out.println("height of Tree : "+obj.height(obj.root));
+    }
+}
+
