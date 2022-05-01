@@ -1,0 +1,60 @@
+import java.util.*;
+public class Main
+{
+	static Scanner sc= new Scanner(System.in);
+    class Node{
+        int data;
+        Node left;Node right;
+        Node(int data){
+            this.data=data;
+            right=left=null;
+        }
+    }
+    Node root;
+    void insertion(int val){
+        root=insertdata(root,val);
+    }
+    Node insertdata(Node root,int val){
+        if(root==null){
+            root=new Node(val);
+            return root;
+        }
+        if(val<root.data){
+            root.left=insertdata(root.left,val);
+        }
+        else if(val>root.data){
+            root.right=insertdata(root.right,val);
+        }
+        return root;
+    }
+    void inorder(Node root){
+        if(root==null){
+            return;
+        }
+        inorder(root.left);
+        System.out.print(root.data+" ");
+        inorder(root.right);
+    }
+    void Rangefind(Node root,int n1,int n2){
+        if(root==null)
+        return;
+        if(root.data>=n1 && root.data<=n2){
+            System.out.print(root.data+" ");
+        }
+        Rangefind(root.left,n1,n2);
+        Rangefind(root.right,n1,n2);
+    }
+	public static void main(String[] args) {
+	    Main tree = new Main();
+	    tree.insertion(50);
+        tree.insertion(30);
+        tree.insertion(20);
+        tree.insertion(40);
+        tree.insertion(70);
+        tree.insertion(60);
+        tree.insertion(80);
+        tree.inorder(tree.root);
+        System.out.println();
+        tree.Rangefind(tree.root,20,50);
+	}
+}
