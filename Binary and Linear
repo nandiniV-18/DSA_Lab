@@ -1,0 +1,43 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+	   // int a[]={1,45,23,98,47};
+	   // int key=98;
+	   // int f=0;
+	   // for (int i=0;i<a.length;i++){
+	   //     if(a[i]==key){
+	   //         f=1;
+	   //         break;
+	   //     }
+	   // } 
+	   // if(f==1){
+	   //     System.out.println("present");
+	   // }
+	   // else{
+	   //     System.out.println("not present");
+	   // }
+	    int a[]={1,23,45,47,98};
+	    int key=97;
+	    int l=0,u=a.length,m,flag=0;
+	    while(l<=u){
+	        m=(l+u)/2;
+	        if(key>a[m]){
+	            l=m+1;
+	        }
+	        else if(key<a[m]){
+	            u=m-1;
+	        }
+	        else if(a[m]==key){
+	            flag=1;
+	            break;
+	        }
+	    }
+	    if(flag==1){
+	        System.out.println("present");
+	    }
+	    else{
+	        System.out.println("not present");
+	    }
+	}
+}
